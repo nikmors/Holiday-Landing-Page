@@ -1,0 +1,157 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    background: -webkit-linear-gradient(to bottom, #F9E5A1, #8EC4C4); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #F9E5A1, #8EC4C4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#logo{
+    z-index: 2;
+    /* make fill colour invisible, otherwise it's shown black! */
+    fill-opacity: 0;
+    /*(centered)*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* set fill animation of the text logo */
+    animation: fill 0.5s ease forwards 3.5s; 
+    
+}
+
+/*Select all letters one by one 1st, 2nd etc. and animate them individually*/
+#logo path:nth-child(1){
+    /* used app.js to get the legth for every letter, after that we now can add the specific integer numbers of the strokes, dasharray & dashoffset, to appear and disappear the strokes to later achieve our css animation*/
+    stroke-dasharray: 1254px; /* appear all strokes */
+    stroke-dashoffset: 1254px; /* disappear all strokes*/
+    
+    animation: line-anim 2s ease forwards;/* animate strokes */
+}
+
+#logo path:nth-child(2){
+    stroke-dasharray: 827px;
+    stroke-dashoffset: 827px;
+
+    animation: line-anim 2s ease forwards 0.3s;/* animate strokes add +0.3secs after the first animation letter*/
+}
+
+#logo path:nth-child(3){
+    stroke-dasharray: 734px;
+    stroke-dashoffset: 734px;
+
+    animation: line-anim 2s ease forwards 0.6s;
+}
+
+#logo path:nth-child(4){
+    stroke-dasharray: 699px;
+    stroke-dashoffset: 699px;
+
+    animation: line-anim 2s ease forwards 0.9s;
+}
+
+#logo path:nth-child(5){
+    stroke-dasharray: 1197px;
+    stroke-dashoffset: 1197px;
+
+    animation: line-anim 2s ease forwards 1.2s;
+}
+
+#logo path:nth-child(6){
+    stroke-dasharray: 836px;
+    stroke-dashoffset: 836px;
+
+    animation: line-anim 2s ease forwards 1.5s;
+}
+
+#logo path:nth-child(7){
+    stroke-dasharray: 1149px;
+    stroke-dashoffset: 1149px;
+
+    animation: line-anim 2s ease forwards 1.8s;
+}
+
+#logo path:nth-child(8){
+    stroke-dasharray: 651px;
+    stroke-dashoffset: 651px;
+
+    animation: line-anim 2s ease forwards 2.1s;
+}
+
+
+/* ==================================== ANIMATION SECTION ======================================================*/
+
+@keyframes line-anim{ /* to draw the lines or strokes */
+    to {
+        stroke-dashoffset: 0;   /* gives the full frame of the image. By setting the strokes offset to 0, you can see the effect apply from the strokes dasharay combined with animation */
+    }
+}
+
+@keyframes fill{ /* to fill our text with white colour */
+    from {
+        fill: transparent;
+    }
+
+    to {
+        fill: white; 
+        fill-opacity: 1; /* turn invisibility back to 1 to show the fill into white (remember: opacity was set to 0 at first, because of fill default colour was black!*/
+    }
+
+    /* NOTES:: having just (to fill white), it just fills the text with white, if you want a smooth transitioning to white, add (from fill transparent) */
+}
+
+
+/*========================== Animation Entrances for Images========================================*/
+.slide-in-bl {
+    
+    animation: ImgLollies 1.5s forwards 3.7s ease-in-out;
+    opacity: 0;
+}
+
+/**
+ * ----------------------------------------
+ * animation slide-in-bl
+ * ----------------------------------------
+ */
+ @keyframes ImgLollies{
+    0%{
+        transform: rotate(0) translateX(-1000px) translateY(90%);
+        opacity: 0;
+        width: 600px;
+        margin: 200px 0px 0px -50px;
+        }
+    100%{
+        transform: rotate(0) translateX(100px) translateY(50%);
+        opacity: 1;
+        width: 600px;
+        margin: 200px 0px 0px -50px;
+        }
+}
+
+/* ----------------------------------------- */
+.slide-in-bl2{
+    animation: ImgPool 1.5s forwards 3.8s ease-in-out;
+    opacity: 0;
+}
+
+/**
+ * ----------------------------------------
+ * animation slide-in-bl2
+ * ----------------------------------------
+ */
+ @keyframes ImgPool{
+    0%{
+        transform: rotate(0) translateX(100px) translateY(-200%);
+        opacity: 0;
+        }
+    100%{
+        transform: rotate(0) translateX(200px) translateY(-50%);
+        opacity: 1;
+        margin: 30px 0px 90px 100px;
+        }
+}
